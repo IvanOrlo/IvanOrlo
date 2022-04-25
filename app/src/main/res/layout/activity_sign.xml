@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fon"
-    tools:context=".SignActivity">
+    tools:context="activity.SignActivity">
 
     <Button
         android:id="@+id/next2"
@@ -18,10 +18,23 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3"
         app:layout_constraintVertical_bias="0.118" />
 
+    <Button
+        android:id="@+id/next3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:text="библиотекарь"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3"
+        app:layout_constraintVertical_bias="0.359" />
+
     <EditText
         android:id="@+id/name2"
         android:layout_width="263dp"
         android:layout_height="49dp"
+        android:background="@color/black"
+        android:backgroundTint="#E8FFBD"
         android:ems="10"
         android:hint="ваше имя"
         android:inputType="textEmailAddress"
@@ -37,6 +50,8 @@
         android:id="@+id/editTextTextPassword3"
         android:layout_width="263dp"
         android:layout_height="57dp"
+        android:background="@color/black"
+        android:backgroundTint="@color/yellow"
         android:ems="10"
         android:hint="ваш пароль"
         android:inputType="textPassword"

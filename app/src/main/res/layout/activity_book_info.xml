@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fon"
+    tools:context="activity.BookInfoActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="326dp"
+        android:layout_height="460dp"
+        android:layout_marginTop="32dp"
+        android:background="#E8FFBD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="#E8FFBD" />
+
+    <TextView
+        android:id="@+id/locationT"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="36dp"
+        android:gravity="center"
+        android:text="location"
+        android:textColor="#325013"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/bookImage2"
+        android:layout_width="98dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/book" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="180dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Title"
+        android:textColor="#325013"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/bookImage2"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/authorT"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="36dp"
+        android:gravity="center"
+        android:text="author"
+        android:textColor="#325013"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="408dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="date"
+        android:textColor="#325013"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/auticon"
+        android:layout_width="53dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/locationT"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/b" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="52dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/authorT"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:srcCompat="@drawable/a" />
+
+    <Button
+        android:id="@+id/addCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="40dp"
+        android:text="добавить"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

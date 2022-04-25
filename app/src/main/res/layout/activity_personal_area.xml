@@ -4,33 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PersonalArea"
-    android:background="@drawable/fon">
+    android:background="@drawable/fon"
+    tools:context="activity.PersonalAreaActivity">
 
     <TextView
         android:id="@+id/userName"
+        style="@style/Widget.AppCompat.TextView"
         android:layout_width="183dp"
         android:layout_height="48dp"
-        android:layout_marginTop="56dp"
+        android:background="#00A58888"
         android:gravity="right"
         android:text="user name"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatarButt"
+        app:layout_constraintEnd_toStartOf="@+id/avatarButt"
+        app:layout_constraintHorizontal_bias="0.975"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/avatarButt"
+        app:layout_constraintVertical_bias="0.566" />
+
+    <ImageView
+        android:id="@+id/avatarButt"
+        android:layout_width="81dp"
+        android:layout_height="78dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058"
+        app:srcCompat="@drawable/avatar" />
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="287dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="148dp"
+        android:background="#000000"
+        android:backgroundTint="#E8FFBD"
+        android:ems="10"
+        android:foregroundTint="@color/teal_700"
+        android:hapticFeedbackEnabled="false"
+        android:hint="что вы хотите найти?"
+        android:inputType="textPersonName"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/avatarButt"
-        android:layout_width="111dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="1dp"
-        android:background="#00FFFFFF"
-        android:scrollbarThumbHorizontal="@color/cardview_shadow_end_color"
-        android:scrollbarThumbVertical="@color/cardview_shadow_end_color"
+    <ImageView
+        android:id="@+id/searchGo"
+        android:layout_width="59dp"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/userName"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/avatar" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/search"
+        app:layout_constraintTop_toTopOf="@+id/search"
+        app:srcCompat="@drawable/searchgo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/findedbooks"
+        android:layout_width="409dp"
+        android:layout_height="531dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:foregroundGravity="top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchGo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,22 @@
-package com.example.mylibrary;
+package com.example.mylibrary.objects;
+
+import java.util.ArrayList;
 
 public class User {
     private String userName;
     private String fraction;
     private String email;
     private int age;
-    private String password;
+    private int password;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;
@@ -39,11 +50,11 @@ public class User {
         this.age = age;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         this.password = password;
     }
 }

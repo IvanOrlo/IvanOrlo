@@ -1,4 +1,4 @@
-package com.example.mylibrary;
+package activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.mylibrary.R;
+import com.example.mylibrary.objects.User;
 
 public class RegistrationActivity extends AppCompatActivity {
     SharedPreferences prefs;
@@ -41,8 +44,8 @@ public class RegistrationActivity extends AppCompatActivity {
                prefs.edit().putString("password", editTextTextPassword.getText().toString()).apply();
                     User user = new User();
                   user.setUserName(name.toString());
-                  user.setPassword(editTextTextPassword.getText().toString());
-                Intent intent = new Intent(RegistrationActivity.this, PersonalArea.class);
+                  user.setPassword(Integer.parseInt(editTextTextPassword.getText().toString()));
+                Intent intent = new Intent(RegistrationActivity.this, PersonalAreaActivity.class);
                 startActivity(intent);
 
             }
