@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mylibrary">
+    package="com.example.mylibrary" >
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,10 @@
         android:label="My library alpha"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyLibrary">
+        android:theme="@style/Theme.MyLibrary" >
+        <activity
+            android:name="activity.UserActivity"
+            android:exported="false" />
         <activity
             android:name="activity.BookInfoActivity"
             android:exported="false" />
@@ -26,7 +29,7 @@
             android:exported="false" />
         <activity
             android:name="activity.StartActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

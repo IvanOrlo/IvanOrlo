@@ -23,13 +23,11 @@ public class BookInfoActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         title = findViewById(R.id.title);
         authorT = findViewById(R.id.authorT);
-        statusT = findViewById(R.id.status);
         locationT = findViewById(R.id.locationT);
         addCase = findViewById(R.id.addCase);
         Intent i = getIntent();
         title.setText(this.getIntent().getStringExtra("title"));
         authorT.setText(this.getIntent().getStringExtra("author"));
-        //statusT.setText(this.getIntent().getIntExtra("date",0)+"");
         locationT.setText(this.getIntent().getStringExtra("location"));
         ArrayList<Book> yourcase = new ArrayList<>();
 

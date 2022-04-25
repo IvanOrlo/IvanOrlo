@@ -23,7 +23,7 @@
         android:id="@+id/locationT"
         android:layout_width="180dp"
         android:layout_height="30dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="232dp"
         android:layout_marginEnd="36dp"
         android:gravity="center"
         android:text="location"
@@ -59,23 +59,10 @@
         android:id="@+id/authorT"
         android:layout_width="180dp"
         android:layout_height="30dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="36dp"
         android:gravity="center"
         android:text="author"
-        android:textColor="#325013"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="408dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:text="date"
         android:textColor="#325013"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
@@ -105,10 +92,10 @@
         android:id="@+id/addCase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="40dp"
-        android:text="добавить"
+        android:layout_marginTop="28dp"
+        android:text="добавить в кейс"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
