@@ -44,12 +44,7 @@ public class PersonalAreaActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager= new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false);
         findedbooks = (RecyclerView) findViewById(R.id.findedbooks);
         findedbooks.setLayoutManager(layoutManager);
-        ArrayList<Book> booksList = new ArrayList<>();
-        for (Book book:books
-             ) {
-            booksList.add(book);
-        }
-        BookAdapter adapter = new BookAdapter(getBaseContext(), booksList);
+        BookAdapter adapter = new BookAdapter(getBaseContext(), books);
         findedbooks.setAdapter(adapter);
 // тыкаем и смотрим инфу книги
         adapter.setClickListener(new BookAdapter.ItemClickListener() {
@@ -68,7 +63,13 @@ public class PersonalAreaActivity extends AppCompatActivity {
         searchGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                BookTable connection = new BookTable(getBaseContext());
+                books.clear();
+                books.addAll(connection.selectByName(search.getText().toString()));
+                LinearLayoutManager layoutManager= new LinearLayoutManager(getBaseContext(),LinearLayoutManager.HORIZONTAL, false);
+                findedbooks = (RecyclerView) findViewById(R.id.findedbooks);
+                findedbooks.setLayoutManager(layoutManager);
+                adapter.notifyDataSetChanged();
             }
         });
 

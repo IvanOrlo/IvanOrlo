@@ -27,7 +27,7 @@
         android:id="@+id/avatarButt"
         android:layout_width="81dp"
         android:layout_height="78dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

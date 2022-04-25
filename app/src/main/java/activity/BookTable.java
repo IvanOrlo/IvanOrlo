@@ -50,6 +50,22 @@ public class BookTable {
         }
         return list;
     }
-
+    public ArrayList<Book> selectByName(String search) {
+        Cursor cursor = connection.getReadableDatabase().query("books", null, "name like ?",  new String[]{"%" + search + "%"}, null, null, null);
+        ArrayList<Book> list = new ArrayList<>();
+        cursor.moveToFirst();
+        if(!cursor.isAfterLast()){
+            do{
+                Book b =new Book("","",0,0,"");
+                b.setId(cursor.getInt(0));
+                b.setName(cursor.getString(1));
+                b.setAuthor(cursor.getString(2));
+                b.setDate(cursor.getInt(3));
+                b.setLocation(cursor.getString(4));
+                list.add(b);
+            }while(cursor.moveToNext());
+        }
+        return list;
+    }
     
 }
