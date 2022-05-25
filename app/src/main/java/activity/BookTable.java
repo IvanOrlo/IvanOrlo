@@ -21,14 +21,15 @@ public class BookTable {
         cv.put("author",book.getAuthor());
         cv.put("date",book.getDate());
         cv.put("location",book.getLocation());
+        cv.put("isFree",book.isFree());
         connection.getWritableDatabase().insert("books", null, cv);
     }
-    public void delete(){
+    public void deleteAll(){
         connection.getWritableDatabase().delete("books",null,null);
     }
     public void delete(int id){
         String[] args = {id+""};
-        connection.getWritableDatabase().delete("books","id = ?"+ id,args);
+        connection.getWritableDatabase().delete("books","id = ?",args);
     }
 
 
@@ -45,11 +46,13 @@ public class BookTable {
                 b.setAuthor(cursor.getString(2));
                 b.setDate(cursor.getInt(3));
                 b.setLocation(cursor.getString(4));
+                b.setFree(cursor.getString(5));
                 list.add(b);
             }while(cursor.moveToNext());
         }
         return list;
     }
+    //поиск по имени
     public ArrayList<Book> selectByName(String search) {
         Cursor cursor = connection.getReadableDatabase().query("books", null, "name like ?",  new String[]{"%" + search + "%"}, null, null, null);
         ArrayList<Book> list = new ArrayList<>();
@@ -62,10 +65,30 @@ public class BookTable {
                 b.setAuthor(cursor.getString(2));
                 b.setDate(cursor.getInt(3));
                 b.setLocation(cursor.getString(4));
+                b.setFree(cursor.getString(5));
                 list.add(b);
             }while(cursor.moveToNext());
         }
         return list;
     }
-    
+    //поиск книг которые добавлены в кейс
+    public ArrayList<Book> selectMy() {
+        Cursor cursor = connection.getReadableDatabase().query("books", null, "EXISTS (SELECT 1 FROM bookcasetable where books.id=bookcasetable.id)",  null, null, null, null);
+        ArrayList<Book> list = new ArrayList<>();
+        cursor.moveToFirst();
+        if(!cursor.isAfterLast()){
+            do{
+                Book b =new Book("","",0,0,"");
+                b.setId(cursor.getInt(0));
+                b.setName(cursor.getString(1));
+                b.setAuthor(cursor.getString(2));
+                b.setDate(cursor.getInt(3));
+                b.setLocation(cursor.getString(4));
+                b.setFree(cursor.getString(5));
+                list.add(b);
+            }while(cursor.moveToNext());
+        }
+        return list;
+    }
+
 }

@@ -10,7 +10,7 @@ import com.example.mylibrary.objects.Book;
 public class DbConnection extends SQLiteOpenHelper {
 
         public static final String DB_NAME = "myaapDB";
-        public static final int VERSION = 15;
+        public static final int VERSION = 18;
         public DbConnection(Context context){
             super(context, DB_NAME,null,VERSION);
         }
@@ -21,9 +21,15 @@ public class DbConnection extends SQLiteOpenHelper {
                     "name text not null,"+
                     "author text not null," +
                     "date int not null,"+
-                    "location text not null"+
+                    "location text not null," +
+                    "isFree text not null"+
                     ");";
             db.execSQL(s);
+
+            String c = "create table bookcasetable(" +
+                    "id integer not null" +
+                    ");";
+            db.execSQL(c);
 
             //тестовая книжка
             Book p = new Book("","",0,0,"");
@@ -31,6 +37,7 @@ public class DbConnection extends SQLiteOpenHelper {
             p.setAuthor("Н.В. Гоголь");
             p.setDate(1830);
             p.setLocation("0");
+            p.setFree("free");
             addBook(p, db);
 
             Book p1 = new Book("","",0,0,"");
@@ -38,6 +45,7 @@ public class DbConnection extends SQLiteOpenHelper {
             p1.setAuthor("А.С. Пушкин");
             p1.setDate(1820);
             p1.setLocation("1");
+            p1.setFree("free");
             addBook(p1,db);
 
             Book p2 = new Book("","",0,0,"");
@@ -45,6 +53,7 @@ public class DbConnection extends SQLiteOpenHelper {
             p2.setAuthor("C418");
             p2.setDate(2018);
             p2.setLocation("2");
+            p2.setFree("free");
             addBook(p2,db);
 
             Book p3 = new Book("","",0,0,"");
@@ -52,6 +61,7 @@ public class DbConnection extends SQLiteOpenHelper {
             p3.setAuthor("Н.В. Носов");
             p3.setDate(1965);
             p3.setLocation("3");
+            p3.setFree("Nfree");
             addBook(p3,db);
         }
 
@@ -62,6 +72,7 @@ public class DbConnection extends SQLiteOpenHelper {
             cv.put("author",book.getAuthor());
             cv.put("date",book.getDate());
             cv.put("location",book.getLocation());
+            cv.put("isFree", book.isFree());
             db.insert("books", null, cv);
         }
         @Override
@@ -70,5 +81,6 @@ public class DbConnection extends SQLiteOpenHelper {
             db.execSQL(s);
             onCreate(db);
         }
+
 
 }

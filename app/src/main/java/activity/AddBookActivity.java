@@ -1,17 +1,24 @@
 package activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mylibrary.R;
 import com.example.mylibrary.objects.Book;
-import com.example.mylibrary.objects.Library;
+
+import forserver.ResponseExample;
+import forserver.SendBook;
+import forserver.ServerHelper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddBookActivity extends AppCompatActivity{
     EditText nameBook,author,date,locationT,lName,lAdress,lGener;
@@ -27,10 +34,9 @@ public class AddBookActivity extends AppCompatActivity{
         date = findViewById(R.id.date);
         add = findViewById(R.id.add);
         locationT = findViewById(R.id.lAdress);
-        lName = findViewById(R.id.lName);
+
         lGener = findViewById(R.id.gener);
-        addAuthor = findViewById(R.id.addAuthor);
-        addLib = findViewById(R.id.add2);
+
         //добавляем книгу
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,29 +56,37 @@ public class AddBookActivity extends AppCompatActivity{
 
                     return;
                 }
-               Book p = new Book("","",0,0,"");
-                p.setName(t);
-                p.setAuthor(a);
-                p.setDate(d);
-                p.setLocation(l);
+               Book bookToSave = new Book("","",0,0,"");
+                bookToSave.setName(t);
+                bookToSave.setAuthor(a);
+                bookToSave.setDate(d);
+                bookToSave.setLocation(l);
                 BookTable bookTable = new BookTable(getBaseContext());
-                bookTable.insert(p);
+                bookTable.insert(bookToSave);
+
+                SendBook c = ServerHelper.getRetrofit().create(SendBook.class);
+                Call<ResponseExample> call = c.saveBook(bookToSave);
+                call.enqueue(new Callback<ResponseExample>() {
+                    @Override
+                    public void onResponse(Call<ResponseExample> call, Response<ResponseExample> response) {
+                        ResponseExample re = response.body();
+                        if (response.code() == 200){
+                            Toast.makeText(getBaseContext(), re.getToken(), Toast.LENGTH_SHORT).show();
+                        }
+                        System.out.println("bad code");
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseExample> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
 
 
-
-                Intent intent = new Intent(AddBookActivity.this, PersonalAreaActivity.class);
+                    Intent intent = new Intent(AddBookActivity.this, PersonalAreaActivity.class);
                 startActivity(intent);
 
-            }
-        });
-        addLib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Library library = new Library("","","");
-                library.setName(lName.getText().toString());
-                library.setAdress(lAdress.getText().toString());
-                LibraryTable libraryTable = new LibraryTable(getBaseContext());
-                libraryTable.insert(library);
             }
         });
     }

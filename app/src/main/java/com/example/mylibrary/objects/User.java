@@ -4,12 +4,19 @@ import java.util.ArrayList;
 
 public class User {
     private String userName;
+    private String userLastName;
     private String fraction;
     private String email;
     private int age;
     private int password;
     private int id;
+    public String getUserLastName() {
+        return userLastName;
+    }
 
+    public void setUserLastName(String userLastName) {
+        this.userLastName = userLastName;
+    }
     public int getId() {
         return id;
     }

@@ -1,7 +1,5 @@
 package activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +9,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.mylibrary.R;
+
+import forserver.AuthBody;
+import forserver.AuthServ;
+import forserver.ResponseExample;
+import forserver.ServerHelper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignActivity extends AppCompatActivity {
     SharedPreferences prefs;
@@ -38,6 +46,10 @@ public class SignActivity extends AppCompatActivity {
                         .toString().equals(prefs.getString("password",""))){
                     Intent intent = new Intent(SignActivity.this, PersonalAreaActivity.class);
                     startActivity(intent);
+
+                    String l = name.getText().toString();
+                    String p = editTextTextPassword.getText().toString();
+
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Ваше имя или пароль не совпадают", Toast.LENGTH_SHORT).show();

@@ -1,21 +1,10 @@
 package com.example.mylibrary.objects;
 
-import android.graphics.Bitmap;
-
 public class Book {
     private String name;
     private String author;
     private String location;
-    private String status;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
+    private String isFree = "free";
     private int date;
     private int id;
     public String getGener() {
@@ -79,6 +68,14 @@ public class Book {
 
     public void setDate(int date) {
         this.date = date;
+    }
+
+    public String isFree() {
+        return isFree;
+    }
+
+    public void setFree(String free) {
+        isFree = free;
     }
 
     @Override

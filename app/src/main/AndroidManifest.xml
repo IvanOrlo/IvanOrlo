@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mylibrary" >
+    package="com.example.mylibrary">
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/mylibraryicon"
-        android:label="My library alpha"
+        android:label="My library"
+        android:networkSecurityConfig="@xml/raz"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyLibrary" >
+        android:theme="@style/Theme.MyLibrary">
+        <activity
+            android:name="activity.BookCaseActivity"
+            android:exported="false" />
         <activity
             android:name="activity.UserActivity"
             android:exported="false" />
@@ -29,7 +35,7 @@
             android:exported="false" />
         <activity
             android:name="activity.StartActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

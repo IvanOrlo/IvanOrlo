@@ -36,14 +36,14 @@
         style="@style/Widget.AppCompat.TextView"
         android:layout_width="183dp"
         android:layout_height="48dp"
-        android:layout_marginStart="128dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:background="#00A58888"
         android:gravity="right"
         android:text="user name"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/avatarButt2"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,11 +67,12 @@
         android:rotation="-7"
         android:rotationX="0"
         android:rotationY="0"
-        android:src="@drawable/caseIcon"
+        android:src="@drawable/caseicon"
         app:layout_constraintEnd_toStartOf="@+id/userName3"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:srcCompat="@drawable/caseicon" />
 
     <TextView
         android:id="@+id/userName3"
@@ -95,24 +96,14 @@
         android:layout_width="270dp"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
         android:background="#00A58888"
         android:foregroundGravity="center"
         android:gravity="center"
         android:text="Ваши данные"
         android:textColor="#0D430F"
         android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="70dp" />
-
-    <Button
-        android:id="@+id/buttonEdit"
-        android:layout_width="129dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="220dp"
-        android:text="изменить"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <TextView
@@ -131,7 +122,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="44dp"
-        android:text="должность"
+        android:text="пользователь"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/userName5" />
 
@@ -141,7 +132,6 @@
         android:layout_height="38dp"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="44dp"
-        android:text="id пользователя"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/userName5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
