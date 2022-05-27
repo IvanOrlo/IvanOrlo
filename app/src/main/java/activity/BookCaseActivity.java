@@ -43,24 +43,24 @@ public class BookCaseActivity extends AppCompatActivity {
         adapter.setClickListener(new BookAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                connection2.delete(adapter.getItem(position).getId());
-                yourBookTable.clear();
-                yourBookTable.addAll(connection.selectMy());
-                adapter.notifyDataSetChanged();
-                Toast.makeText(getBaseContext(), "Ваш заказ принят, ожидайте уведомления от библиотеки", Toast.LENGTH_SHORT).show();
-
-                Book bookToSave = new Book(adapter.getItem(position).getName(),adapter.getItem(position).getAuthor(),adapter.getItem(position).getDate(),adapter.getItem(position).getId(),adapter.getItem(position).getLocation());
+                Book bookToSave = new Book("","",0,connection.selectMy().get(position).getId(),"");
+                bookToSave.setName(adapter.getItem(position).getName());
+                bookToSave.setAuthor(adapter.getItem(position).getAuthor());
+                bookToSave.setDate(adapter.getItem(position).getDate());
+                bookToSave.setLocation(adapter.getItem(position).getLocation());
+                bookToSave.setId(adapter.getItem(position).getId());
                 SendBook c = ServerHelper.getRetrofit().create(SendBook.class);
-                Call<ResponseExample> call = c.saveBook(bookToSave);
+                Call<ResponseExample> call = c.saveChosenBook(bookToSave);
                 call.enqueue(new Callback<ResponseExample>() {
                     @Override
                     public void onResponse(Call<ResponseExample> call, Response<ResponseExample> response) {
                         ResponseExample re = response.body();
                         if (response.code() == 200){
-                            Toast.makeText(getBaseContext(), re.getToken(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getBaseContext(), re.getToken(), Toast.LENGTH_SHORT).show();
                         }
-                        System.out.println("произошла ошибка повторите попытку позже");
-
+                        else {
+                            System.out.println("bad code");
+                        }
                     }
 
                     @Override
@@ -68,6 +68,13 @@ public class BookCaseActivity extends AppCompatActivity {
                         t.printStackTrace();
                     }
                 });
+
+                connection2.delete(adapter.getItem(position).getId());
+                yourBookTable.clear();
+                yourBookTable.addAll(connection.selectMy());
+                adapter.notifyDataSetChanged();
+                Toast.makeText(getBaseContext(), "Ваш заказ принят, ожидайте уведомления от библиотеки", Toast.LENGTH_SHORT).show();
+
             }
         });
 

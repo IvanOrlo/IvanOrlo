@@ -11,4 +11,6 @@ public interface SendBook {
     @POST("/book")
     Call<ResponseExample> saveBook(@Body Book authBody);
 
+    @POST("/chosenBook")
+    Call<ResponseExample> saveChosenBook(@Body Book authBody);
 }

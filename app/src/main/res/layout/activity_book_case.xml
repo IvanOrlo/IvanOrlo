@@ -8,6 +8,46 @@
     android:foregroundGravity="top"
     tools:context="activity.BookCaseActivity">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="333dp"
+        android:layout_height="178dp"
+        android:layout_marginTop="24dp"
+        android:background="#E8FFBD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="#E8FFBD" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="115dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="28dp"
+        android:rotation="-7"
+        android:rotationX="0"
+        android:rotationY="0"
+        android:src="@drawable/caseicon"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:srcCompat="@drawable/caseicon" />
+
+    <TextView
+        android:id="@+id/userName4"
+        style="@style/Widget.AppCompat.TextView"
+        android:layout_width="201dp"
+        android:layout_height="159dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:background="#00A58888"
+        android:foregroundGravity="center"
+        android:gravity="center|start"
+        android:text="добрый день, желаете сделать заказ?"
+        android:textColor="#0D430F"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/addedBooks"
         android:layout_width="408dp"

@@ -13,10 +13,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mylibrary.R;
 
+import forserver.AuthBody;
+import forserver.CompleteResponce;
+import forserver.GetUserId;
+import forserver.ServerHelper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class UserActivity extends AppCompatActivity {
     TextView uin,uif,uiid,uin2;
     ImageView goToBC;
-    Button editUinfo;
+    Button libMode;
     SharedPreferences prefs;
 
     @Override
@@ -30,7 +39,8 @@ public class UserActivity extends AppCompatActivity {
         uif = findViewById(R.id.userInfoFraction);
         goToBC = findViewById(R.id.imageView4);
         uiid = findViewById(R.id.userInfoId);
-        uin.setText(prefs.getString("name", "") + " "+prefs.getString("lastName", ""));
+        libMode = findViewById(R.id.libMode);
+        uin.setText("ваше имя: "+prefs.getString("name", "") + " "+prefs.getString("lastName", ""));
         uin2.setText(prefs.getString("name", ""));
         goToBC.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +50,35 @@ public class UserActivity extends AppCompatActivity {
 
             }
         });
+        libMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserActivity.this, AddBookActivity.class);
+                startActivity(intent);
+            }
+        });
+        //показываем id юзера
+        Retrofit r = ServerHelper.getRetrofit();
+        GetUserId t = r.create(GetUserId.class);
+        Call<CompleteResponce> call = t.complete(new AuthBody(prefs.getString("name", ""),prefs.getString("password", "")));
+        call.enqueue(new Callback<CompleteResponce>() {
+            @Override
+            public void onResponse(Call<CompleteResponce> call, Response<CompleteResponce> response) {
+                CompleteResponce cr = response.body();
+                System.out.println(response.code());
+                try {
+                    uif.setText("ваш id: "+cr.getId());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
 
+            }
+
+            @Override
+            public void onFailure(Call<CompleteResponce> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
     }
 }

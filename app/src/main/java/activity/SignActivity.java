@@ -13,20 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mylibrary.R;
 
-import forserver.AuthBody;
-import forserver.AuthServ;
-import forserver.ResponseExample;
-import forserver.ServerHelper;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class SignActivity extends AppCompatActivity {
     SharedPreferences prefs;
     EditText name;
     EditText editTextTextPassword;
-    Button next,next3;
-
+    Button next;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +25,6 @@ public class SignActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         name = findViewById(R.id.name2);
         next = findViewById(R.id.next2);
-        next3 = findViewById(R.id.next3);
         editTextTextPassword = findViewById(R.id.editTextTextPassword3);
         prefs = getSharedPreferences("com.example.app", Context.MODE_PRIVATE);
         if (prefs.getString("name", "") == null) return;
@@ -57,12 +47,5 @@ public class SignActivity extends AppCompatActivity {
             }
         });
 
-        next3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignActivity.this, AddBookActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
